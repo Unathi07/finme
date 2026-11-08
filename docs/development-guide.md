@@ -18,7 +18,7 @@ PyCharm: Settings → Project → Python Interpreter → add a local virtual env
 
 ## Frontend
 
-Second terminal: `cd frontend`; `npm ci`; `npm run dev`; open `http://localhost:5173`. Configure `VITE_API_BASE_URL` in root `.env` as needed.
+Second terminal: `cd frontend`; `npm install`; `npm run dev`; open `http://localhost:5173`. Configure `VITE_API_BASE_URL` in root `.env` as needed.
 
 ## Checks
 
