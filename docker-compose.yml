@@ -2,9 +2,9 @@ services:
   db:
     image: postgres:17-alpine
     environment:
-      POSTGRES_DB: finme
-      POSTGRES_USER: finme
-      POSTGRES_PASSWORD: finme_dev_only
+      POSTGRES_DB: ${POSTGRES_DB:-finme}
+      POSTGRES_USER: ${POSTGRES_USER:-finme}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-finme_dev_only}
     ports: ["5432:5432"]
     volumes: [finme_pgdata:/var/lib/postgresql/data]
     healthcheck:
@@ -15,6 +15,8 @@ services:
   backend:
     build: ./backend
     env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-finme}:${POSTGRES_PASSWORD:-finme_dev_only}@db:5432/${POSTGRES_DB:-finme}
     ports: ["8000:8000"]
     depends_on:
       db: {condition: service_healthy}
