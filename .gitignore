@@ -218,3 +218,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+# Finme AI frontend tooling
+node_modules/
+dist/
+coverage/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-finme}
+      POSTGRES_USER: ${POSTGRES_USER:-finme}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-finme_dev_only}
+    ports: ["5432:5432"]
+    volumes: [finme_pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U finme -d finme"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-finme}:${POSTGRES_PASSWORD:-finme_dev_only}@db:5432/${POSTGRES_DB:-finme}
+    ports: ["8000:8000"]
+    depends_on:
+      db: {condition: service_healthy}
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000/api/v1
+    ports: ["5173:5173"]
+    depends_on: [backend]
+volumes:
+  finme_pgdata:
