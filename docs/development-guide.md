@@ -12,6 +12,8 @@ In PyCharm choose **Get from VCS**, paste `https://github.com/Unathi07/finme.git
 
 With Docker: from the project root run `docker compose up -d db`. Without Docker, install PostgreSQL 17 and create a local `finme` database/user; set `DATABASE_URL` in `.env`.
 
+When running the full Docker Compose stack, apply migrations with `docker compose run --rm backend alembic upgrade head`. When running the backend directly on Windows, run `alembic upgrade head` from `backend` after the database is ready.
+
 ## Backend
 
 PyCharm: Settings → Project → Python Interpreter → add a local virtual environment using Python 3.12 under `backend/.venv`. In a terminal: `cd backend`; `py -3.12 -m venv .venv`; `.venv\Scripts\Activate.ps1`; `python -m pip install -e ".[dev]"`; `alembic upgrade head`; `uvicorn app.main:app --reload`. Visit `http://localhost:8000/health` and `/docs`.
