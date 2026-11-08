@@ -18,7 +18,7 @@ PyCharm: Settings → Project → Python Interpreter → add a local virtual env
 
 ## Frontend
 
-Second terminal: `cd frontend`; `npm install`; `npm run dev`; open `http://localhost:5173`. Configure `VITE_API_BASE_URL` in root `.env` as needed.
+Second terminal: `cd frontend`; `npm ci`; `npm run dev`; open `http://localhost:5173`. Configure `VITE_API_BASE_URL` in root `.env` as needed.
 
 ## Checks
 
@@ -30,3 +30,4 @@ Backend: `pytest`, `ruff check .`, `ruff format --check .`. Frontend: `npm run t
 - Port 5432 in use: stop the other local PostgreSQL service or change the published port and `DATABASE_URL`.
 - API unreachable: confirm backend runs on 8000 and frontend uses the correct `VITE_API_BASE_URL`.
 - Migration errors: confirm database is healthy and URL uses `postgresql+psycopg`.
+
