@@ -15,11 +15,11 @@ React, TypeScript, Vite, Tailwind CSS, React Router; Python, FastAPI, Pydantic, 
 
 ## Quick start (Windows / PyCharm)
 
-Requirements: Python 3.12, Node.js 22 LTS with npm, Git, and optionally Docker Desktop with Compose. Copy `.env.example` to `.env`. Start PostgreSQL with `docker compose up -d db` (or use a local PostgreSQL instance), then follow [docs/development-guide.md](docs/development-guide.md). Backend: `cd backend; py -3.12 -m venv .venv; .venv\Scripts\Activate.ps1; python -m pip install -e .[dev]; alembic upgrade head; uvicorn app.main:app --reload`. Frontend in a second terminal: `cd frontend; npm ci; npm run dev`.
+Requirements: Python 3.12, Node.js 22 LTS with npm, Git, and optionally Docker Desktop with Compose. Copy `.env.example` to `.env`. Start PostgreSQL with `docker compose up -d db` (or use a local PostgreSQL instance), then follow [docs/development-guide.md](docs/development-guide.md). Backend: `cd backend; py -3.12 -m venv .venv; .venv\Scripts\Activate.ps1; python -m pip install -e .[dev]; alembic upgrade head; uvicorn app.main:app --reload`. Frontend in a second terminal: `cd frontend; npm install; npm run dev`.
 
 ## Test and quality checks
 
-Backend: `cd backend; pytest; ruff check .; ruff format --check .`. Frontend: `cd frontend; npm ci; npm run typecheck; npm test -- --run; npm run build`.
+Backend: `cd backend; pytest; ruff check .; ruff format --check .`. Frontend: `cd frontend; npm install; npm run typecheck; npm test -- --run; npm run build`.
 
 ## Architecture
 
