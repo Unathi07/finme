@@ -1,0 +1,16 @@
+name: Feature request
+description: Propose a user-facing capability
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes: {label: User problem, description: Who needs what and why?}
+    validations: {required: true}
+  - type: textarea
+    id: requirements
+    attributes: {label: Technical requirements}
+    validations: {required: true}
+  - type: textarea
+    id: acceptance
+    attributes: {label: Acceptance criteria}
+    validations: {required: true}
