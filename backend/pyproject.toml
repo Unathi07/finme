@@ -25,4 +25,3 @@ line-ending = "lf"
 
 [tool.hatch.build.targets.wheel]
 packages = ["app"]
-

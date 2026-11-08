@@ -14,4 +14,3 @@ app.add_middleware(
 )
 app.include_router(health_router, prefix=settings.api_v1_prefix)
 app.include_router(health_router)
-
