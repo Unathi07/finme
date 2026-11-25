@@ -10,11 +10,11 @@ Currency = Annotated[str, Field(pattern=r"^[A-Z]{3}$")]
 Notes = Annotated[str, Field(max_length=500)]
 
 
-class IncomeBase(BaseModel):
+class IncomeBase(BaseModel):  # Prevents unknown fields
     model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
 
 
-class IncomeCreate(IncomeBase):
+class IncomeCreate(IncomeBase):  # Validation for creating an income entry
     source: Source
     amount: Amount
     currency: Currency = "ZAR"
@@ -22,7 +22,7 @@ class IncomeCreate(IncomeBase):
     notes: Notes | None = None
 
 
-class IncomeUpdate(IncomeBase):
+class IncomeUpdate(IncomeBase):  # Allows individual updates and prevents required fields to be null
     source: Source | None = None
     amount: Amount | None = None
     currency: Currency | None = None
@@ -37,7 +37,7 @@ class IncomeUpdate(IncomeBase):
         return self
 
 
-class IncomeRead(BaseModel):
+class IncomeRead(BaseModel):  # Income data returned by the API
     model_config = ConfigDict(from_attributes=True)
 
     id: int
